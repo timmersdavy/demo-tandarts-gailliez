@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tandarts Hélène Gailliez · Ham</title>
+<meta name="description" content="Tandartspraktijk in Ham. Rustig, duidelijk en dicht bij huis.">
+<style>
+:root{
+  --bg:#ffffff; --bg2:#f5f5f7; --text:#1d1d1f; --muted:#6e6e73;
+  --accent:#0071e3; --accent-h:#0077ed; --line:rgba(0,0,0,.08);
+  --shadow:0 8px 30px rgba(0,0,0,.10);
+  --ease:cubic-bezier(.28,.11,.32,1);
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#000; --bg2:#1d1d1f; --text:#f5f5f7; --muted:#a1a1a6; --accent:#2997ff; --accent-h:#4aa8ff; --line:rgba(255,255,255,.12); --shadow:0 8px 30px rgba(0,0,0,.6)}
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,"SF Pro Text","SF Pro Display","Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.47;font-size:18px;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+
+.demo{background:var(--text);color:var(--bg);font-size:14px;text-align:center;padding:9px 16px}
+
+.layout{display:grid;grid-template-columns:minmax(280px,360px) 1fr;max-width:1240px;margin:0 auto}
+.side{position:sticky;top:0;align-self:start;height:100vh;padding:56px 40px 40px 32px;display:flex;flex-direction:column;justify-content:space-between;border-right:1px solid var(--line)}
+.brand{font-size:22px;font-weight:600;letter-spacing:-.02em;line-height:1.2}
+.brand span{display:block;font-weight:400;color:var(--muted);font-size:16px;letter-spacing:0;margin-top:6px}
+.side nav{display:flex;flex-direction:column;gap:4px;margin-top:48px}
+.side nav a{color:var(--muted);padding:8px 0;font-size:17px;transition:color .3s var(--ease)}
+.side nav a:hover,.side nav a.on{color:var(--text)}
+.side nav a.on{font-weight:600}
+.side address{font-style:normal;color:var(--muted);font-size:15px;line-height:1.5;margin-bottom:20px}
+.btn{display:inline-block;background:var(--accent);color:#fff;border:0;font:inherit;font-size:17px;padding:12px 24px;border-radius:980px;cursor:pointer;transition:background .3s var(--ease),transform .3s var(--ease)}
+.btn:hover{background:var(--accent-h);transform:scale(1.02)}
+.btn.ghost{background:transparent;color:var(--accent);padding-left:0}
+.btn.ghost:hover{background:transparent;transform:none;text-decoration:underline}
+
+main{padding:0 32px 0 72px}
+section{padding:120px 0}
+section+section{border-top:1px solid var(--line)}
+h1{font-size:clamp(44px,6.4vw,84px);font-weight:600;letter-spacing:-.03em;line-height:1.04;max-width:12ch}
+h2{font-size:clamp(32px,4vw,48px);font-weight:600;letter-spacing:-.02em;line-height:1.1;max-width:18ch}
+.lead{font-size:clamp(20px,2vw,24px);color:var(--muted);max-width:34ch;margin-top:28px;line-height:1.4}
+.hero{padding-top:140px;padding-bottom:140px}
+.hero .actions{margin-top:44px;display:flex;gap:28px;align-items:center;flex-wrap:wrap}
+
+/* Eerste bezoek: echte volgorde, dus een tijdlijn */
+.visit{margin-top:64px;position:relative;max-width:640px}
+.visit::before{content:"";position:absolute;left:11px;top:10px;bottom:10px;width:2px;background:var(--line)}
+.visit li{list-style:none;position:relative;padding:0 0 44px 52px}
+.visit li:last-child{padding-bottom:0}
+.visit li::before{content:"";position:absolute;left:0;top:6px;width:24px;height:24px;border-radius:50%;background:var(--bg);border:2px solid var(--accent)}
+.visit h3{font-size:22px;font-weight:600;letter-spacing:-.01em}
+.visit p{color:var(--muted);margin-top:6px;max-width:46ch}
+.visit.draw::before{background:linear-gradient(var(--accent),var(--accent)) top/2px 0 no-repeat,var(--line);animation:draw 1.6s var(--ease) .2s forwards}
+@keyframes draw{to{background-size:2px 100%}}
+
+/* Zorg: lijst, geen kaartjes */
+.care{margin-top:56px;max-width:720px}
+.care div{display:grid;grid-template-columns:minmax(150px,220px) 1fr;gap:12px 32px;padding:26px 0;border-top:1px solid var(--line)}
+.care div:last-child{border-bottom:1px solid var(--line)}
+.care dt{font-weight:600;font-size:19px}
+.care dd{color:var(--muted)}
+
+.tint{background:var(--bg2);margin:0 -32px 0 -72px;padding-left:72px;padding-right:32px}
+
+.hours{margin-top:48px;max-width:420px;width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.hours td{padding:14px 0;border-top:1px solid var(--line)}
+.hours tr:last-child td{border-bottom:1px solid var(--line)}
+.hours td:last-child{text-align:right;color:var(--muted)}
+.hours tr.today td{color:var(--text);font-weight:600}
+.note{color:var(--muted);font-size:15px;margin-top:14px}
+
+form{margin-top:48px;max-width:520px;display:grid;gap:18px}
+label{display:grid;gap:6px;font-size:15px;color:var(--muted)}
+input,textarea,select{font:inherit;font-size:17px;color:var(--text);background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:13px 14px;width:100%}
+textarea{min-height:110px;resize:vertical}
+.ok{display:none;margin-top:48px;max-width:520px;padding:26px;border-radius:18px;background:var(--bg2);box-shadow:var(--shadow)}
+.ok h3{font-size:22px;font-weight:600}
+.ok p{color:var(--muted);margin-top:6px}
+
+footer{padding:40px 0 60px;color:var(--muted);font-size:14px}
+
+@media (max-width:900px){
+  .layout{grid-template-columns:1fr}
+  .side{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line);padding:28px 24px;gap:20px}
+  .side nav{flex-direction:row;flex-wrap:wrap;gap:6px 20px;margin-top:20px}
+  .side address{display:none}
+  main{padding:0 24px}
+  .tint{margin:0 -24px;padding-left:24px;padding-right:24px}
+  section{padding:72px 0}
+  .hero{padding-top:72px;padding-bottom:80px}
+  .care div{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{animation:none!important;transition:none!important}
+  .visit.draw::before{background:var(--accent)}
+}
+</style>
+</head>
+<body>
+<div class="demo">Voorbeeldontwerp van TimmersDesign. Teksten en openingsuren zijn voorbeelden en worden samen met u ingevuld.</div>
+
+<div class="layout">
+  <aside class="side">
+    <div>
+      <div class="brand">Tandarts<br>Hélène Gailliez<span>Tandartspraktijk in Ham</span></div>
+      <nav aria-label="Hoofdmenu">
+        <a href="#start" class="on">Praktijk</a>
+        <a href="#bezoek">Uw eerste bezoek</a>
+        <a href="#zorg">Zorg</a>
+        <a href="#info">Openingsuren</a>
+        <a href="#afspraak">Afspraak</a>
+      </nav>
+    </div>
+    <div>
+      <address>Baal 28<br>3980 Tessenderlo-Ham</address>
+      <a class="btn" href="#afspraak">Afspraak maken</a>
+    </div>
+  </aside>
+
+  <main>
+    <section id="start" class="hero">
+      <h1>Een tandarts dicht bij huis.</h1>
+      <p class="lead">Een nieuwe praktijk in Ham, met tijd voor uw vragen en een duidelijke uitleg bij elke behandeling.</p>
+      <div class="actions">
+        <a class="btn" href="#afspraak">Afspraak maken</a>
+        <a class="btn ghost" href="#bezoek">Wat kunt u verwachten</a>
+      </div>
+    </section>
+
+    <section id="bezoek">
+      <h2>Zo verloopt uw eerste bezoek.</h2>
+      <p class="lead">Geen verrassingen. U weet vooraf wat er gebeurt en waarom.</p>
+      <ol class="visit" id="visit">
+        <li>
+          <h3>Kennismaking</h3>
+          <p>We praten over uw gezondheid, uw klachten en wat u van een tandarts verwacht.</p>
+        </li>
+        <li>
+          <h3>Onderzoek van mond en tanden</h3>
+          <p>Een grondige controle van tanden, tandvlees en kaak, zodat niets over het hoofd wordt gezien.</p>
+        </li>
+        <li>
+          <h3>Uitleg in gewone taal</h3>
+          <p>We tonen wat we zien en bespreken wat nodig is en wat kan wachten.</p>
+        </li>
+        <li>
+          <h3>Een plan dat bij u past</h3>
+          <p>U beslist mee. Is er behandeling nodig, dan plannen we die op een moment dat past.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section id="zorg" class="tint">
+      <h2>Zorg voor de hele familie.</h2>
+      <dl class="care">
+        <div><dt>Controle en reiniging</dt><dd>Regelmatig nakijken voorkomt grotere problemen. Tandsteen verwijderen hoort daarbij.</dd></div>
+        <div><dt>Vullingen en herstel</dt><dd>Een gaatje of een afgebroken tand herstellen we zo natuurlijk mogelijk.</dd></div>
+        <div><dt>Tandvlees</dt><dd>Bloedt uw tandvlees bij het poetsen? Dan kijken we samen wat er aan de hand is.</dd></div>
+        <div><dt>Kinderen</dt><dd>Rustig kennismaken, zodat een bezoek aan de tandarts van jongs af vertrouwd voelt.</dd></div>
+        <div><dt>Pijn of spoed</dt><dd>Hebt u plots pijn? Neem contact op, dan zoeken we een oplossing.</dd></div>
+      </dl>
+    </section>
+
+    <section id="info">
+      <h2>Openingsuren en bereikbaarheid.</h2>
+      <table class="hours" id="hours">
+        <tr data-d="1"><td>Maandag</td><td>09.00 tot 18.00</td></tr>
+        <tr data-d="2"><td>Dinsdag</td><td>09.00 tot 18.00</td></tr>
+        <tr data-d="3"><td>Woensdag</td><td>09.00 tot 12.30</td></tr>
+        <tr data-d="4"><td>Donderdag</td><td>09.00 tot 18.00</td></tr>
+        <tr data-d="5"><td>Vrijdag</td><td>09.00 tot 16.00</td></tr>
+        <tr data-d="6"><td>Zaterdag</td><td>Gesloten</td></tr>
+        <tr data-d="0"><td>Zondag</td><td>Gesloten</td></tr>
+      </table>
+      <p class="note">Voorbeelduren. De echte uren vult de praktijk zelf aan.</p>
+      <p style="margin-top:36px;color:var(--muted)">Baal 28, 3980 Tessenderlo-Ham<br><a href="https://www.google.com/maps/search/?api=1&query=Baal+28+3980+Tessenderlo-Ham" target="_blank" rel="noopener">Route openen in Google Maps</a></p>
+    </section>
+
+    <section id="afspraak" class="tint">
+      <h2>Een afspraak aanvragen.</h2>
+      <p class="lead">Laat uw gegevens achter. We nemen contact op om een moment af te spreken.</p>
+      <form id="form">
+        <label>Naam<input name="naam" required autocomplete="name"></label>
+        <label>Telefoon of e-mail<input name="contact" required autocomplete="email"></label>
+        <label>Reden van uw bezoek
+          <select name="reden">
+            <option>Controle en reiniging</option>
+            <option>Pijn of klacht</option>
+            <option>Kind (kennismaking)</option>
+            <option>Iets anders</option>
+          </select>
+        </label>
+        <label>Opmerking (optioneel)<textarea name="msg"></textarea></label>
+        <div><button class="btn" type="submit">Afspraak aanvragen</button></div>
+      </form>
+      <div class="ok" id="ok" role="status">
+        <h3>Aanvraag verzonden.</h3>
+        <p>In de echte website komt deze melding na het versturen, en ontvangt de praktijk uw bericht per mail.</p>
+      </div>
+    </section>
+
+    <footer>© 2026 Tandarts Hélène Gailliez · Baal 28, 3980 Tessenderlo-Ham · Voorbeeldontwerp door TimmersDesign</footer>
+  </main>
+</div>
+
+<script>
+// huidige dag in de openingsuren markeren
+var t=document.querySelector('#hours tr[data-d="'+new Date().getDay()+'"]');if(t)t.classList.add('today');
+// tijdlijn tekent zich zodra ze in beeld komt
+var v=document.getElementById('visit');
+if('IntersectionObserver' in window){new IntersectionObserver(function(e,o){if(e[0].isIntersecting){v.classList.add('draw');o.disconnect()}},{threshold:.3}).observe(v)}else{v.classList.add('draw')}
+// actieve link in het zijmenu
+var links=[].slice.call(document.querySelectorAll('.side nav a'));
+var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'))});
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(l){l.classList.toggle('on',l.getAttribute('href')==='#'+e.target.id)})}})},{rootMargin:'-40% 0px -55% 0px'});secs.forEach(function(s){io.observe(s)})}
+// demo-formulier
+document.getElementById('form').addEventListener('submit',function(e){e.preventDefault();this.style.display='none';document.getElementById('ok').style.display='block'});
+</script>
+</body>
+</html>
